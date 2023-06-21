@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (savedUsername && savedPassword) {
 		const existingUserButton = document.getElementById('existing');
 		existingUserButton.style.display = 'inline-block';
+	} else {
+		const existingUserButton = document.getElementById('existing');
+		existingUserButton.style.display = 'none';
 	}
 
 	// Handle form submission

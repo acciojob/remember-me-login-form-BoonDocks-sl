@@ -1,10 +1,10 @@
-const uName = document.getElementById('username');
-const pWord = document.getElementById('password');
-const cBox = document.getElementById('checkbox');
-const btn = document.getElementById('submit')
-const name;
-const password;
-const check;
+let uName = document.getElementById('username');
+let pWord = document.getElementById('password');
+let cBox = document.getElementById('checkbox');
+let btn = document.getElementById('submit')
+let name;
+let password;
+let check;
 
 
 uName.addEventListener('input', () =>{

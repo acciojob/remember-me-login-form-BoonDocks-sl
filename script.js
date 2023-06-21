@@ -1,29 +1,39 @@
-let uName = document.getElementById('username');
-let pWord = document.getElementById('password');
-let cBox = document.getElementById('checkbox');
-let btn = document.getElementById('submit')
-let name;
-let password;
-let check;
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+	// Retrieve stored username and password from local storage
+	const savedUsername = localStorage.getItem('username');
+	const savedPassword = localStorage.getItem('password');
 
+	// Check if there are saved details and show the existing user button
+	if (savedUsername && savedPassword) {
+		const existingUserButton = document.getElementById('existing');
+		existingUserButton.style.display = 'inline-block';
+	}
 
-uName.addEventListener('input', () =>{
-	name = uName.value;
+	// Handle form submission
+	document.getElementById('loginForm').addEventListener('submit', function(e) {
+		e.preventDefault();
+
+		const username = document.getElementById('username').value;
+		const password = document.getElementById('password').value;
+		const rememberMe = document.getElementById('checkbox').checked;
+
+		// Store username and password if "Remember me" checkbox is checked
+		if (rememberMe) {
+			localStorage.setItem('username', username);
+			localStorage.setItem('password', password);
+		} else {
+			// Remove stored username and password
+			localStorage.removeItem('username');
+			localStorage.removeItem('password');
+		}
+
+		alert(`Logged in as ${username}`);
+	});
+
+	// Handle existing user button click
+	document.getElementById('existing').addEventListener('click', function() {
+		const savedUsername = localStorage.getItem('username');
+		alert(`Logged in as ${savedUsername}`);
+	});
 });
-pWord.addEventListener('input',() =>{
-	password = pWord.value;
-});
-
-cBox.addEventListener('input',() => {
-	check = cBox.checked
-});
-
-btn.addEventListener('click', () => {
-    if(check){
-      localStorage.setItem('username',name);
-      localStorage.setItem('password',password);
-    }
-    alert(`Logged in as ${name}`);
-});
-
-
